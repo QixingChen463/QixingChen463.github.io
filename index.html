@@ -1,297 +1,288 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Qixing Chen| Personal Website</title>
-    <meta
-      name="description"
-      content="Qixing Chen"
-    />
-    <meta name="theme-color" content="#0b0f14" />
+<head>
+	<title>
+		Qixing Chen
+	</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Qixing Chen — undergraduate at UC Berkeley studying Neuroscience and Computer Science.">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="script.js" defer></script>
+</head>
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="Your Name | Personal Website" />
-    <meta
-      property="og:description"
-      content="Projects, experience, and contact information."
-    />
-    <meta property="og:type" content="website" />
+<body>
+	<div class="navcont">
+		<ul class="nav">
+			<li class="nav"><a href="#top" class="curr_nav">Index</a></li>
+			<li class="nav"><a href="#education">Education</a></li>
+			<li class="nav"><a href="#research">Research</a></li>
+			<li class="nav"><a href="#projects">Projects</a></li>
+			<li class="nav"><a href="#teaching">Teaching</a></li>
+			<li class="nav"><a href="#skills">Skills</a></li>
+			<li class="nav"><a href="#contact">Contact</a></li>
+		</ul>
+	</div>
 
-    <link rel="icon" href="data:," />
-    <link rel="stylesheet" href="./styles.css" />
-  </head>
+	<div class="card" id="top">
+		<h1>Hi, I'm Qixing,</h1>
+		<h2 style="text-indent: 5%;">an undergraduate at <a href="https://www.berkeley.edu/" class="texta">UC Berkeley</a>,</h2>
+		<h3 style="text-indent: 10%;">studying <a href="https://neuroscience.berkeley.edu/" class="texta">Neuroscience</a> and <a href="https://eecs.berkeley.edu/" class="texta">Computer Science</a> as a simultaneous degree.</h3>
+		<h1>I'm interested in</h1>
+		<h2 style="text-indent: 5%;">machine learning for neurological and clinical data.</h2>
+		<br>
+		<h3>I currently research at <a href="https://www.ucsf.edu/" class="texta">UCSF</a>, building models that score walking impairment from video, and I tutor <a href="https://datastructur.es/" class="texta">CS 61B</a> at Berkeley.</h3>
+		<br>
+	</div>
 
-  <body>
-    <header class="header">
-      <a class="logo" href="#top" aria-label="Go to top">👋 Your Name</a>
+	<div class="card">
 
-      <nav class="nav" aria-label="Primary">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-      </nav>
+		<!-- ============ Education ============ -->
+		<div class="subcard" id="education">
+			<h2 class="cvtitle">Education</h2>
+			<div class="indent">
+				<h4 class="lralign cvitem">
+					B.A., <a href="https://www.berkeley.edu/" class="texta">University of California, Berkeley</a>
+					<span class="date">Expected Spring 2028</span>
+				</h4>
+				<ul class="cvlist">
+					<li>Neuroscience and Computer Science (Simultaneous Degree)</li>
+					<li>GPA: 3.978 / 4.000</li>
+					<li id="courses_taken">
+						<a class="expand">
+							Selected List of Courses Taken
+						</a>
+						<div class="expandcontent">
+							<table>
+								<tr>
+									<th>Computer Science</th>
+									<th>Mathematics</th>
+									<th>Natural Sciences</th>
+								</tr>
+								<tr>
+									<td>
+										COMPSCI <a href="https://cs61a.org/" class="texta b">61A</a>
+										<br>
+										(Structure and Interpretation of Computer Programs)
+									</td>
+									<td>
+										MATH <span class="b">53</span>
+										<br>
+										(Multivariable Calculus)
+									</td>
+									<td>
+										BIOLOGY <span class="b">1A / 1AL</span>
+										<br>
+										(General Biology and Laboratory)
+									</td>
+								</tr>
+								<tr>
+									<td>
+										COMPSCI <a href="https://datastructur.es/" class="texta b">61B</a>
+										<br>
+										(Data Structures)
+									</td>
+									<td>
+										MATH <span class="b">54</span>
+										<br>
+										(Linear Algebra and Differential Equations)
+									</td>
+									<td>
+										CHEM <span class="b">1A / 1AL</span>
+										<br>
+										(General Chemistry and Laboratory)
+									</td>
+								</tr>
+								<tr>
+									<td>
+										COMPSCI <a href="https://cs61c.org/" class="texta b">61C</a>
+										<br>
+										(Machine Structures)
+										<br>
+										<span class="planned">Summer 2026</span>
+									</td>
+									<td>
+										MATH <span class="b">55</span>
+										<br>
+										(Discrete Mathematics)
+									</td>
+									<td>
+										CHEM <span class="b">3A</span>
+										<br>
+										(Organic Chemistry)
+									</td>
+								</tr>
+								<tr>
+									<td>
+										COMPSCI <a href="https://www.eecs70.org/" class="texta b">70</a>
+										<br>
+										(Discrete Mathematics and Probability Theory)
+									</td>
+									<td>
+									</td>
+									<td>
+										PHYSICS <span class="b">7A / 8B</span>
+										<br>
+										(Mechanics; Electromagnetism, Waves, and Optics)
+									</td>
+								</tr>
+								<tr>
+									<td>
+										COMPSCI <a href="https://cs170.org/" class="texta b">170</a>
+										<br>
+										(Efficient Algorithms and Intractable Problems)
+										<br>
+										<span class="planned">Planned, Fall 2026</span>
+									</td>
+									<td>
+									</td>
+									<td>
+										NEUROSCI <span class="b">100A</span>
+										<br>
+										(Introduction to Neuroscience)
+										<br>
+										<span class="planned">Planned, Fall 2026</span>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										COMPSCI <a href="https://www.eecs189.org/" class="texta b">189</a>
+										<br>
+										(Introduction to Machine Learning)
+										<br>
+										<span class="planned">Planned, Fall 2026</span>
+									</td>
+									<td>
+									</td>
+									<td>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
 
-      <div class="header-actions">
-        <button
-          id="themeToggle"
-          class="btn btn-ghost"
-          type="button"
-          aria-label="Toggle theme"
-        >
-          🌙
-        </button>
-        <a class="btn" href="#contact">Get in touch</a>
-      </div>
-    </header>
+		<!-- ============ Research ============ -->
+		<div class="subcard" id="research">
+			<h2 class="cvtitle">Research Experience</h2>
+			<div class="indent">
+				<h4 class="lralign cvitem">
+					Undergraduate Researcher, BrainWalk Project
+					<span class="date">Present</span>
+					<br>
+					<a href="https://www.ucsf.edu/" class="texta">University of California, San Francisco</a>
+					<br>
+					<span class="light">Advisors: Peter Yiitcan Washington, PhD and Riley Bove, MD</span>
+				</h4>
+				<ul class="cvlist">
+					<li>Developed machine learning models to predict Functional Gait Assessment (FGA) scores from walking videos.</li>
+					<li>Built an end-to-end pipeline for pose extraction, feature engineering, model training, and evaluation.</li>
+					<li>Implemented participant-level machine learning experiments in Python and scikit-learn.</li>
+					<li>Applied participant-level cross-validation, feature selection, and model evaluation techniques.</li>
+					<li>Collaborated with clinicians on machine learning approaches for neurological gait assessment.</li>
+				</ul>
 
-    <main id="top" class="main">
-      <!-- Hero -->
-      <section class="hero">
-        <div class="hero-left">
-          <p class="eyebrow">Hi, I’m</p>
-          <h1 class="headline">Your Name</h1>
-          <p class="subhead">
-            A one-line introduction about you, e.g. “UC Berkeley student /
-            Software Engineering / Machine Learning / Product-focused.”
-          </p>
+				<h4 class="cvitem">
+					<a class="expand">Experimental Techniques</a>
+				</h4>
+				<div class="expandcontent">
+					<ul class="cvlist">
+						<li>Stereotaxic surgery and intracranial viral injection</li>
+						<li>Mouse perfusion and tissue fixation</li>
+						<li>Mouse brain extraction and tissue sectioning</li>
+						<li>Brain tissue preparation for histological analysis</li>
+						<li>Intraperitoneal (IP) and subcutaneous injections</li>
+						<li>Surgical suturing and post-operative care</li>
+						<li>Laboratory mouse handling</li>
+					</ul>
+				</div>
+			</div>
+		</div>
 
-          <div class="cta">
-            <a class="btn" href="#projects">View my projects</a>
-            <a
-              class="btn btn-ghost"
-              href="https://github.com/your-github-username"
-              target="_blank"
-              rel="noreferrer"
-            >
-              GitHub →
-            </a>
-            <!-- Optional: place your resume at assets/resume.pdf -->
-            <a
-              class="btn btn-ghost"
-              href="./assets/resume.pdf"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Download résumé
-            </a>
-          </div>
+		<!-- ============ Projects ============ -->
+		<div class="subcard" id="projects">
+			<h2 class="cvtitle">Independent Projects</h2>
+			<div class="indent">
+				<h4 class="lralign cvitem">
+					Wordle Solver
+					<!-- Add a repo link here, e.g.:
+					     <a href="https://github.com/QixingChen463/wordle-solver" class="texta">Code</a> -->
+				</h4>
+				<ul class="cvlist">
+					<li>Implemented an efficient Wordle-solving algorithm.</li>
+				</ul>
 
-          <div class="badges">
-            <span class="badge">Python</span>
-            <span class="badge">ML</span>
-            <span class="badge">Web</span>
-            <span class="badge">Research</span>
-          </div>
-        </div>
+				<h4 class="lralign cvitem">
+					Auto Typer
+				</h4>
+				<ul class="cvlist">
+					<li>Developed a Python automation tool.</li>
+				</ul>
 
-        <div class="hero-right">
-          <!-- Optional avatar: assets/avatar.png -->
-          <div class="avatar" aria-hidden="true">
-            <img
-              src="./assets/avatar.png"
-              alt="Avatar"
-              onerror="this.remove(); this.parentElement.classList.add('avatar-fallback')"
-            />
-            <div class="avatar-fallback-inner">
-              <span>Your Name</span>
-              <small>your@email.com</small>
-            </div>
-          </div>
+				<h4 class="lralign cvitem">
+					Maze Game AI
+				</h4>
+				<ul class="cvlist">
+					<li>Implemented maze solving using recursive backtracking algorithms.</li>
+				</ul>
+			</div>
+		</div>
 
-          <div class="card quick">
-            <h2>Current Focus</h2>
-            <ul>
-              <li>✅ Area / project you are currently working on</li>
-              <li>✅ Another ongoing focus or research direction</li>
-              <li>✅ Opportunities or collaborations you’re seeking</li>
-            </ul>
-          </div>
-        </div>
-      </section>
+		<!-- ============ Teaching ============ -->
+		<div class="subcard" id="teaching">
+			<h2 class="cvtitle">Teaching Experience</h2>
+			<div class="indent">
+				<h4 class="lralign cvitem">
+					Tutor, <a href="https://datastructur.es/" class="texta">COMPSCI 61B</a> (Data Structures)
+					<br>
+					<a href="https://eecs.berkeley.edu/" class="texta">Dept. of EECS</a>, <a href="https://www.berkeley.edu/" class="texta">University of California, Berkeley</a>
+				</h4>
+				<ul class="cvlist">
+					<li>Tutored undergraduate students in Java, data structures, algorithms, debugging, and exam preparation.</li>
+				</ul>
+			</div>
+		</div>
 
-      <!-- About -->
-      <section id="about" class="section">
-        <div class="section-title">
-          <h2>About Me</h2>
-          <p>
-            In 3–5 sentences: who you are, what you’re good at, what you’ve done,
-            and what you want to do next.
-          </p>
-        </div>
+		<!-- ============ Skills ============ -->
+		<div class="subcard" id="skills">
+			<h2 class="cvtitle">Technical Skills</h2>
+			<div class="indent">
+				<h4 class="cvitem light">Programming</h4>
+				<ul class="chips">
+					<li>Python</li>
+					<li>Java</li>
+					<li>C</li>
+				</ul>
+				<h4 class="cvitem light">Machine Learning</h4>
+				<ul class="chips">
+					<li>scikit-learn</li>
+				</ul>
+				<h4 class="cvitem light">Computer Vision</h4>
+				<ul class="chips">
+					<li>MediaPipe</li>
+					<li>OpenCV</li>
+				</ul>
+			</div>
+		</div>
 
-        <div class="grid-2">
-          <div class="card">
-            <h3>Background</h3>
-            <p>
-              I am a … (school / year / field). I enjoy working on …
-              (technical stack / research interests). Previously, I have worked
-              on … (1–2 key experiences).
-            </p>
-            <p class="muted">
-              Feel free to rewrite this in your own voice—concise, concrete, and
-              verifiable.
-            </p>
-          </div>
+		<!-- ============ Contact ============ -->
+		<div class="subcard" id="contact">
+			<h2 class="cvtitle">Contact</h2>
+			<div class="indent">
+				<ul class="cvlist">
+					<!-- TODO: replace with your real Berkeley address -->
+					<li>Email: <a href="mailto:your-email@berkeley.edu" class="texta">your-email@berkeley.edu</a></li>
+					<li>GitHub: <a href="https://github.com/QixingChen463" class="texta">@QixingChen463</a></li>
+				</ul>
+			</div>
+		</div>
 
-          <div class="card">
-            <h3>Skills</h3>
-            <div class="chips">
-              <span class="chip">Python</span>
-              <span class="chip">Pandas / NumPy</span>
-              <span class="chip">PyTorch</span>
-              <span class="chip">Scikit-learn</span>
-              <span class="chip">React</span>
-              <span class="chip">Git</span>
-            </div>
+	</div>
+</body>
 
-            <h3 style="margin-top: 18px">Highlights</h3>
-            <ul class="list">
-              <li>📌 Quantified result in one sentence (e.g. “Improved X by Y%”)</li>
-              <li>📌 Impact statement (e.g. users served or data scale)</li>
-              <li>📌 Technical detail (e.g. GroupKFold to prevent data leakage)</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- Projects -->
-      <section id="projects" class="section">
-        <div class="section-title">
-          <h2>Projects</h2>
-          <p>
-            Showcase 2–6 representative projects. Each should include a brief
-            summary, highlights, and links.
-          </p>
-        </div>
-
-        <div class="projects">
-          <article class="card project">
-            <div class="project-head">
-              <h3>Project A: One-line Title</h3>
-              <div class="project-links">
-                <a
-                  href="https://github.com/your-github-username/your-project-repo"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Code
-                </a>
-                <a
-                  href="https://your-demo-or-paper-link"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Demo
-                </a>
-              </div>
-            </div>
-            <p>
-              One sentence describing what you built, what problem it solves,
-              and who it’s for.
-            </p>
-            <ul class="list">
-              <li>Highlight 1: quantitative result or evaluation</li>
-              <li>Highlight 2: methods or technical stack</li>
-              <li>Highlight 3: key challenge and solution</li>
-            </ul>
-            <div class="chips">
-              <span class="chip">Python</span>
-              <span class="chip">ML</span>
-              <span class="chip">CV</span>
-            </div>
-          </article>
-
-          <article class="card project">
-            <div class="project-head">
-              <h3>Project B: One-line Title</h3>
-              <div class="project-links">
-                <a
-                  href="https://github.com/your-github-username"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Code
-                </a>
-              </div>
-            </div>
-            <p>A short description with one or two key outcomes.</p>
-            <ul class="list">
-              <li>Highlight 1</li>
-              <li>Highlight 2</li>
-            </ul>
-            <div class="chips">
-              <span class="chip">Web</span>
-              <span class="chip">API</span>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <!-- Contact -->
-      <section id="contact" class="section">
-        <div class="section-title">
-          <h2>Contact</h2>
-          <p>Include your email, LinkedIn, and GitHub.</p>
-        </div>
-
-        <div class="grid-2">
-          <div class="card">
-            <h3>Get in Touch</h3>
-            <p>
-              Email:
-              <a href="mailto:your@email.com">your@email.com</a><br />
-              LinkedIn:
-              <a
-                href="https://www.linkedin.com/in/your-id"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Your profile
-              </a><br />
-              GitHub:
-              <a
-                href="https://github.com/your-github-username"
-                target="_blank"
-                rel="noreferrer"
-              >
-                @your-github-username
-              </a>
-            </p>
-            <p class="muted">
-              If you are looking for internships or research collaborations,
-              you can add a short note here.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Leave a Message (Optional)</h3>
-            <p class="muted">
-              Static sites cannot send emails directly. You can:
-              1) contact me via email; 2) use a Google Form; or 3) use Formspree
-              (a third-party form service).
-            </p>
-            <a
-              class="btn btn-ghost"
-              href="https://forms.gle/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Add a Google Form →
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <footer class="footer">
-        <span>© <span id="year"></span> Your Name</span>
-        <span class="muted">Built with GitHub Pages</span>
-      </footer>
-    </main>
-
-    <script src="./script.js"></script>
-  </body>
+<footer>
+	<p>Qixing Chen, <span id="currentYear"></span></p>
+</footer>
 </html>
-
-
-

@@ -1,0 +1,310 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap');
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	padding: 0;
+	margin: 0;
+	font-family: 'Oxygen', 'Segoe UI', system-ui, -apple-system, sans-serif;
+	font-size: 100%;
+	text-align: justify;
+	text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	background-color: #FFFFFF;
+	color: #1A1A1A;
+}
+
+/* ---------- Navigation ---------- */
+
+div.navcont {
+	margin: 0;
+	padding: 0.1em;
+	background-color: #686868;
+	color: #FFFFFF;
+	position: sticky;
+	top: 0;
+	z-index: 10;
+}
+
+ul.nav {
+	list-style-type: none;
+	text-align: center;
+	padding: 0;
+	margin: 0.4em 0;
+}
+
+li.nav {
+	display: inline-block;
+	padding: 0 1.6%;
+}
+
+.nav > a {
+	font-size: 1.2em;
+	text-decoration: none;
+	text-align: center;
+	color: #EEEEEE;
+	cursor: pointer;
+}
+
+.nav > a:visited {
+	color: #EEEEEE;
+}
+
+.nav > a:hover {
+	font-weight: bold;
+}
+
+.nav > a.curr_nav {
+	font-size: 1.3em;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+
+/* ---------- Cards ---------- */
+
+div.card {
+	margin: 1em;
+	padding: 0.5em 1.5em;
+	background-color: #E6E6E6;
+	border-radius: 1em;
+	scroll-margin-top: 4.5em;
+}
+
+div.subcard {
+	padding: 0.5em 1em;
+	margin: 0.5em 0;
+	background-color: #D5D5D5;
+	border-radius: 0.5em;
+	scroll-margin-top: 4.5em;
+}
+
+div.indent {
+	padding: 0 2em;
+}
+
+/* ---------- C.V. items ---------- */
+
+.cvitem {
+	margin: 0;
+	padding: 0;
+}
+
+.cvlist {
+	margin: 0 0 0.5em 0;
+}
+
+.cvlist > li {
+	width: 75%;
+	padding: 0 0 0.25em 0;
+}
+
+.cvtitle {
+	margin: 0.5em 0;
+}
+
+/* Only the .date span floats; other spans in the heading stay inline. */
+.lralign > span.date {
+	float: right;
+	font-size: inherit;
+	font-weight: normal;
+}
+
+.light {
+	font-weight: normal;
+	padding: 0;
+	margin: 0;
+}
+
+/* ---------- Expandable sections ---------- */
+
+.expand {
+	border: none;
+	cursor: pointer;
+	font-family: inherit;
+	font-size: inherit;
+	background-color: transparent;
+	padding: 0;
+}
+
+.expand:hover {
+	font-weight: bold;
+}
+
+.expand:after {
+	content: " [+]";
+}
+
+.active:after {
+	content: " [-]";
+}
+
+.expandcontent {
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.5s ease-out;
+	margin: 0.5em 0;
+}
+
+/* ---------- Text helpers ---------- */
+
+a.texta {
+	color: #373737;
+}
+
+a.texta:visited {
+	color: #373737;
+}
+
+a.b {
+	font-weight: bold;
+}
+
+.emph {
+	font-weight: bold;
+}
+
+.underline {
+	text-decoration: underline;
+}
+
+.planned {
+	font-style: italic;
+	color: #5A5A5A;
+	font-size: 0.85em;
+}
+
+.chips {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+.chips > li {
+	display: inline-block;
+	padding: 0.15em 0.6em;
+	margin: 0.2em 0.3em 0.2em 0;
+	background-color: #EDEDED;
+	border: 0.05em solid #A8A8A8;
+	border-radius: 0.8em;
+	font-size: 0.9em;
+}
+
+/* ---------- Coursework table ---------- */
+
+#courses_taken {
+	width: 100%;
+}
+
+#courses_taken table {
+	width: 100%;
+	table-layout: fixed;
+	text-align: left;
+}
+
+#courses_taken th,
+#courses_taken td {
+	padding: 0 2% 0.5em 0;
+	vertical-align: top;
+}
+
+.borderedtable {
+	border-bottom: 0.1em solid #7E7E7E;
+	border-collapse: collapse;
+}
+
+.borderedtable td {
+	border-bottom: 0.1em solid #7E7E7E;
+	border-collapse: collapse;
+	padding: 0.5em 1em;
+	text-align: center;
+}
+
+.borderedtable th {
+	border: 0.1em solid #7E7E7E;
+	background-color: #7E7E7E;
+	color: #EAEAEA;
+	border-collapse: collapse;
+	padding: 0.5em 1em;
+	font-weight: normal;
+	text-align: center;
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+	background-color: #373737;
+	color: #FFFFFF;
+	font-family: inherit;
+	padding: 0.5em 2em;
+	margin: 0;
+	text-align: right;
+}
+
+footer p {
+	margin: 0.5em 0;
+}
+
+/* ---------- Small screens ---------- */
+
+@media screen and (max-width: 700px) {
+	body {
+		text-align: left;
+	}
+
+	li.nav {
+		padding: 0 0.5em;
+	}
+
+	.nav > a {
+		font-size: 1em;
+	}
+
+	.nav > a.curr_nav {
+		font-size: 1.05em;
+	}
+
+	div.card {
+		margin: 0.5em;
+		padding: 0.5em 0.8em;
+	}
+
+	div.indent {
+		padding: 0 0.5em;
+	}
+
+	.cvlist > li {
+		width: auto;
+	}
+
+	.lralign > span.date {
+		float: none;
+		display: block;
+		font-size: 0.9em;
+		color: #4A4A4A;
+	}
+
+	h1 {
+		font-size: 1.6em;
+	}
+
+	h2 {
+		font-size: 1.25em;
+	}
+
+	h3 {
+		font-size: 1.05em;
+	}
+
+	h2[style], h3[style] {
+		text-indent: 0 !important;
+	}
+
+	#courses_taken table {
+		table-layout: auto;
+		font-size: 0.9em;
+	}
+}
