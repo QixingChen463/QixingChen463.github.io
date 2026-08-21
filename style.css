@@ -69,8 +69,6 @@ div.indent {
 
 /* ---------- Expandable sections ---------- */
 
-/* A toggle, not a link: same blue so it reads as clickable, but a dashed
-   underline rather than the solid one navigation gets. */
 .expand {
 	border: none;
 	cursor: pointer;
@@ -78,16 +76,8 @@ div.indent {
 	font-size: inherit;
 	background-color: transparent;
 	padding: 0;
-	color: #0645AD;
-	border-bottom: 1px dashed #0645AD;
 	-webkit-user-select: none;
 	user-select: none;
-}
-
-/* Hovering must not change the metrics, or the text below shifts. */
-.expand:hover {
-	color: #0A2D6E;
-	border-bottom-style: solid;
 }
 
 .expand:focus-visible {
@@ -95,9 +85,15 @@ div.indent {
 	outline-offset: 2px;
 }
 
+/* Only the marker carries the affordance; the label stays body text. */
 .expand:after {
 	content: " [+]";
 	font-weight: bold;
+	color: #0645AD;
+}
+
+.expand:hover:after {
+	color: #0A2D6E;
 }
 
 .active:after {
