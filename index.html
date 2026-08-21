@@ -194,12 +194,14 @@
 			<h2 class="cvtitle">Independent Projects</h2>
 			<div class="indent">
 				<h4 class="lralign cvitem">
-					Wordle Solver
-					<!-- Add a repo link here, e.g.:
-					     <a href="https://github.com/QixingChen463/wordle-solver" class="texta">Code</a> -->
+					Wordle: Game and Solver
+					<span class="date">Java</span>
 				</h4>
 				<ul class="cvlist">
-					<li>Implemented an efficient Wordle-solving algorithm.</li>
+					<li>Built a playable Wordle in Java Swing together with a solver that works out the guesses, with no third-party dependencies. <a href="https://github.com/QixingChen463/wordle" class="texta">Code</a>.</li>
+					<li>Implemented three guessing strategies: a letter-frequency heuristic, a maximum-entropy search that scores every word by the bits of information it is expected to reveal, and a memoised beam search over the decision tree that minimises total guesses rather than guesses per turn.</li>
+					<li>Precomputed the colouring of all 2315 &times; 2315 guess/answer pairs into a byte table, reducing the inner loop of the search to an array lookup.</li>
+					<li>Benchmarked every strategy over the full answer list: entropy averages 3.50 guesses and the beam search 3.44, both solving all 2315 words within six.</li>
 				</ul>
 
 				<h4 class="lralign cvitem">
