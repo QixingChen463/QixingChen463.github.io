@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap');
 
-html {
-	scroll-behavior: smooth;
-}
-
 body {
 	padding: 0;
 	margin: 0;
@@ -18,52 +14,6 @@ body {
 	color: #1A1A1A;
 }
 
-/* ---------- Navigation ---------- */
-
-div.navcont {
-	margin: 0;
-	padding: 0.1em;
-	background-color: #686868;
-	color: #FFFFFF;
-	position: sticky;
-	top: 0;
-	z-index: 10;
-}
-
-ul.nav {
-	list-style-type: none;
-	text-align: center;
-	padding: 0;
-	margin: 0.4em 0;
-}
-
-li.nav {
-	display: inline-block;
-	padding: 0 1.6%;
-}
-
-.nav > a {
-	font-size: 1.2em;
-	text-decoration: none;
-	text-align: center;
-	color: #EEEEEE;
-	cursor: pointer;
-}
-
-.nav > a:visited {
-	color: #EEEEEE;
-}
-
-.nav > a:hover {
-	font-weight: bold;
-}
-
-.nav > a.curr_nav {
-	font-size: 1.3em;
-	font-weight: bold;
-	color: #FFFFFF;
-}
-
 /* ---------- Cards ---------- */
 
 div.card {
@@ -71,7 +21,6 @@ div.card {
 	padding: 0.5em 1.5em;
 	background-color: #E6E6E6;
 	border-radius: 1em;
-	scroll-margin-top: 4.5em;
 }
 
 div.subcard {
@@ -79,7 +28,6 @@ div.subcard {
 	margin: 0.5em 0;
 	background-color: #D5D5D5;
 	border-radius: 0.5em;
-	scroll-margin-top: 4.5em;
 }
 
 div.indent {
@@ -253,18 +201,6 @@ footer p {
 @media screen and (max-width: 700px) {
 	body {
 		text-align: left;
-	}
-
-	li.nav {
-		padding: 0 0.5em;
-	}
-
-	.nav > a {
-		font-size: 1em;
-	}
-
-	.nav > a.curr_nav {
-		font-size: 1.05em;
 	}
 
 	div.card {
