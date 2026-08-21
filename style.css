@@ -69,6 +69,8 @@ div.indent {
 
 /* ---------- Expandable sections ---------- */
 
+/* A toggle, not a link: same blue so it reads as clickable, but a dashed
+   underline rather than the solid one navigation gets. */
 .expand {
 	border: none;
 	cursor: pointer;
@@ -76,14 +78,26 @@ div.indent {
 	font-size: inherit;
 	background-color: transparent;
 	padding: 0;
+	color: #0645AD;
+	border-bottom: 1px dashed #0645AD;
+	-webkit-user-select: none;
+	user-select: none;
 }
 
+/* Hovering must not change the metrics, or the text below shifts. */
 .expand:hover {
-	font-weight: bold;
+	color: #0A2D6E;
+	border-bottom-style: solid;
+}
+
+.expand:focus-visible {
+	outline: 2px solid #0645AD;
+	outline-offset: 2px;
 }
 
 .expand:after {
 	content: " [+]";
+	font-weight: bold;
 }
 
 .active:after {
