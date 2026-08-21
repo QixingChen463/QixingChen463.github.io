@@ -205,10 +205,15 @@
 				</ul>
 
 				<h4 class="lralign cvitem">
-					Auto Typer
+					Typing Bot
+					<span class="date">Java</span>
 				</h4>
 				<ul class="cvlist">
-					<li>Developed a Python automation tool.</li>
+					<li>Built a browser automation pipeline that reads prompt text off a page, replays it as OS-level keystrokes, and transcribes image challenges through a vision model. <a href="https://github.com/QixingChen463/typing-bot" class="texta">Code</a>.</li>
+					<li>Drove the keyboard with <code>java.awt.Robot</code> rather than WebDriver's <code>sendKeys</code>, which only sets a field value and never fires the key events a page's own handlers listen for.</li>
+					<li>Replaced a lookup that throws on characters with no physical key with an explicit US-layout table resolving each character to a keycode and shift flag, written as a pure function so the mapping is testable without a display.</li>
+					<li>Put the transcription behind an <code>OcrProvider</code> interface with a vision model and a hosted OCR service as interchangeable implementations, compared on accuracy, latency, and cost, and tried in order so one can stand in for the other.</li>
+					<li>Corrected transcription near-misses by snapping each token to its nearest entry in a closed 2000-word vocabulary, with a Levenshtein routine using two rolling rows and early abandonment for O(mn) time in O(n) space.</li>
 				</ul>
 
 				<h4 class="lralign cvitem">

@@ -114,6 +114,16 @@ a.b {
 	font-weight: bold;
 }
 
+/* Monospace runs large next to Oxygen, so pull it back to match. */
+code {
+	font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+	font-size: 0.9em;
+	background-color: rgba(0, 0, 0, 0.06);
+	padding: 0.05em 0.3em;
+	border-radius: 0.25em;
+	overflow-wrap: break-word;
+}
+
 .emph {
 	font-weight: bold;
 }
