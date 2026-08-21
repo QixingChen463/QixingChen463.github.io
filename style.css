@@ -99,12 +99,15 @@ div.indent {
 
 /* ---------- Text helpers ---------- */
 
-a.texta {
-	color: #373737;
+/* Links are blue everywhere. Dark enough to stay readable on the grey
+   card (#E6E6E6) and subcard (#D5D5D5) backgrounds. */
+a.texta,
+a.texta:visited {
+	color: #0645AD;
 }
 
-a.texta:visited {
-	color: #373737;
+a.texta:hover {
+	color: #0A2D6E;
 }
 
 a.b {
