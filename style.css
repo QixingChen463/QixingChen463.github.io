@@ -30,7 +30,7 @@ div.card {
 	width: 190px;
 	max-width: 38%;
 	height: auto;
-	margin: 0.75em 0 1em 1.5em;
+	margin: 0.75em 1.5em 1em 1.5em;
 	border-radius: 0.5em;
 	border: 1px solid #C4C4C4;
 }
