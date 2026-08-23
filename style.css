@@ -21,6 +21,18 @@ div.card {
 	padding: 0.5em 1.5em;
 	background-color: #E6E6E6;
 	border-radius: 1em;
+	/* contains the floated profile photo so it cannot spill past the card */
+	display: flow-root;
+}
+
+.profile {
+	float: right;
+	width: 190px;
+	max-width: 38%;
+	height: auto;
+	margin: 0.75em 0 1em 1.5em;
+	border-radius: 0.5em;
+	border: 1px solid #C4C4C4;
 }
 
 div.subcard {
@@ -219,6 +231,15 @@ footer p {
 	div.card {
 		margin: 0.5em;
 		padding: 0.5em 0.8em;
+	}
+
+	/* Floating it here would squeeze the headings into a sliver. */
+	.profile {
+		float: none;
+		display: block;
+		width: 160px;
+		max-width: 55%;
+		margin: 1em auto 0.5em;
 	}
 
 	div.indent {
