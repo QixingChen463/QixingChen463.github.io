@@ -16,23 +16,46 @@ body {
 
 /* ---------- Cards ---------- */
 
+/* Cap the measure. Full-viewport cards ran to 140-odd characters a line
+   and left the photo stranded in a wide empty field. */
 div.card {
-	margin: 1em;
+	max-width: 60em;
+	margin: 1em auto;
 	padding: 0.5em 1.5em;
 	background-color: #E6E6E6;
 	border-radius: 1em;
-	/* contains the floated profile photo so it cannot spill past the card */
-	display: flow-root;
+}
+
+/* Justifying a heading opens word-spacing gaps as soon as it wraps, and
+   headings are short enough that the ragged edge costs nothing. */
+h1, h2, h3, h4 {
+	text-align: left;
+}
+
+/* Two real columns rather than a float, so the text keeps one straight
+   edge instead of notching in and out around the photo. */
+.intro {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	gap: 2em;
+	align-items: center;
 }
 
 .profile {
-	float: right;
-	width: 190px;
-	max-width: 38%;
-	height: auto;
-	margin: 0.75em 1.5em 1em 1.5em;
+	width: 200px;
+	height: 200px;
+	overflow: hidden;
 	border-radius: 0.5em;
 	border: 1px solid #C4C4C4;
+}
+
+/* Square crop framed on the face; the source is taller than it is wide. */
+.profile img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center 15%;
 }
 
 div.subcard {
@@ -217,11 +240,28 @@ footer {
 	text-align: right;
 }
 
+/* Line the footer up with the card edge now that the cards are centred. */
 footer p {
-	margin: 0.5em 0;
+	max-width: 60em;
+	margin: 0.5em auto;
 }
 
 /* ---------- Small screens ---------- */
+
+/* Two columns stop working well before the phone breakpoint: the text
+   column narrows until the indented lines wrap and the staircase reads
+   as ragged instead of deliberate. Stack the photo on top instead. */
+@media screen and (max-width: 860px) {
+	.intro {
+		grid-template-columns: 1fr;
+		justify-items: center;
+		gap: 1em;
+	}
+
+	.profile {
+		order: -1;
+	}
+}
 
 @media screen and (max-width: 700px) {
 	body {
@@ -233,13 +273,9 @@ footer p {
 		padding: 0.5em 0.8em;
 	}
 
-	/* Floating it here would squeeze the headings into a sliver. */
 	.profile {
-		float: none;
-		display: block;
-		width: 160px;
-		max-width: 55%;
-		margin: 1em auto 0.5em;
+		width: 150px;
+		height: 150px;
 	}
 
 	div.indent {
