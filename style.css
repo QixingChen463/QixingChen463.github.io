@@ -177,6 +177,10 @@ a.b {
 	margin: 0;
 	padding: 0;
 	list-style-type: none;
+
+	/* The page justifies body text, which stretches any chip row that wraps
+	   out to the full measure. Chips sit together on the left instead. */
+	text-align: left;
 }
 
 .chips > li {
