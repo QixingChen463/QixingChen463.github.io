@@ -12,14 +12,29 @@
 </head>
 
 <body>
+	<nav class="sitenav" aria-label="Sections">
+		<div class="navinner">
+			<a href="index.html" class="navbrand texta" aria-current="page">Qixing Chen</a>
+			<ul class="navlinks">
+				<li><a href="research.html" class="texta">Research</a></li>
+				<li><a href="projects.html" class="texta">Projects</a></li>
+				<li><a href="cv.html" class="texta">CV</a></li>
+			</ul>
+		</div>
+	</nav>
 	<div class="card" id="top">
 		<div class="intro">
 			<div class="intro-text">
-				<h1>Hi, I'm Qixing,</h1>
+				<h1>Hi, I&rsquo;m Qixing,</h1>
 				<h2 style="text-indent: 5%;">an undergraduate at <a href="https://www.berkeley.edu/" class="texta">UC Berkeley</a>,</h2>
 				<h3 style="text-indent: 10%;">studying <a href="https://neuroscience.berkeley.edu/" class="texta">Neuroscience</a> and <a href="https://eecs.berkeley.edu/" class="texta">Computer Science</a> as a simultaneous degree.</h3>
-				<h1>I'm interested in</h1>
+				<h1>I&rsquo;m interested in</h1>
 				<h2 style="text-indent: 5%;">Machine Learning and Computational Neuroscience.</h2>
+				<p class="contactline">
+					<a href="mailto:qixing_chen@berkeley.edu" class="texta">qixing_chen@berkeley.edu</a>
+					&middot;
+					<a href="https://github.com/QixingChen463" class="texta">@QixingChen463</a>
+				</p>
 			</div>
 			<div class="profile">
 				<img src="img/profile.jpg" alt="Qixing Chen">
@@ -29,338 +44,49 @@
 
 	<div class="card">
 
-		<!-- ============ Education ============ -->
-		<div class="subcard" id="education">
-			<h2 class="cvtitle">Education</h2>
+		<div class="subcard">
+			<h2 class="cvtitle"><a href="research.html" class="texta">Research</a></h2>
 			<div class="indent">
-				<h4 class="lralign cvitem">
-					<a href="https://www.berkeley.edu/" class="texta">University of California, Berkeley</a>
-					<span class="date">Expected May 2028</span>
-				</h4>
-				<ul class="cvlist">
-					<li>B.A. in Neuroscience &amp; B.A. in Computer Science (Simultaneous Degree)</li>
-					<li>GPA: 3.980 / 4.000</li>
-					<li id="courses_taken">
-						<a class="expand" role="button" tabindex="0" aria-expanded="false">
-							Selected List of Courses Taken
-						</a>
-						<div class="expandcontent">
-							<table>
-								<tr>
-									<th>Computer Science</th>
-									<th>Mathematics</th>
-									<th>Natural Sciences</th>
-								</tr>
-								<tr>
-									<td>
-										COMPSCI <a href="https://cs61a.org/" class="texta b">61A</a>
-										<br>
-										(Structure and Interpretation of Computer Programs)
-									</td>
-									<td>
-										MATH <span class="b">53</span>
-										<br>
-										(Multivariable Calculus)
-									</td>
-									<td>
-										BIOLOGY <span class="b">1A / 1AL</span>
-										<br>
-										(General Biology and Laboratory)
-									</td>
-								</tr>
-								<tr>
-									<td>
-										COMPSCI <a href="https://datastructur.es/" class="texta b">61B</a>
-										<br>
-										(Data Structures)
-									</td>
-									<td>
-										MATH <span class="b">54</span>
-										<br>
-										(Linear Algebra and Differential Equations)
-									</td>
-									<td>
-										CHEM <span class="b">1A / 1AL</span>
-										<br>
-										(General Chemistry and Laboratory)
-									</td>
-								</tr>
-								<tr>
-									<td>
-										COMPSCI <a href="https://cs61c.org/" class="texta b">61C</a>
-										<br>
-										(Machine Structures)
-									</td>
-									<td>
-										MATH <span class="b">55</span>
-										<br>
-										(Discrete Mathematics)
-									</td>
-									<td>
-										CHEM <span class="b">3A</span>
-										<br>
-										(Organic Chemistry)
-									</td>
-								</tr>
-								<tr>
-									<td>
-										COMPSCI <a href="https://www.eecs70.org/" class="texta b">70</a>
-										<br>
-										(Discrete Mathematics and Probability Theory)
-									</td>
-									<td>
-									</td>
-									<td>
-										PHYSICS <span class="b">7A / 8B</span>
-										<br>
-										(Mechanics; Electromagnetism, Waves, and Optics)
-									</td>
-								</tr>
-								<tr>
-									<td>
-										COMPSCI <a href="https://cs170.org/" class="texta b">170</a>
-										<br>
-										(Efficient Algorithms and Intractable Problems)
-										<br>
-										<span class="planned">In progress</span>
-									</td>
-									<td>
-									</td>
-									<td>
-										NEUROSCI <span class="b">100A</span>
-										<br>
-										(Introduction to Neuroscience)
-										<br>
-										<span class="planned">Planned</span>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										EECS <a href="https://eecs127.github.io/" class="texta b">127</a>
-										<br>
-										(Optimization Models in Engineering)
-										<br>
-										<span class="planned">In progress</span>
-									</td>
-									<td>
-									</td>
-									<td>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										EECS <a href="https://www.eecs126.org/" class="texta b">126</a>
-										<br>
-										(Probability and Random Processes)
-										<br>
-										<span class="planned">In progress</span>
-									</td>
-									<td>
-									</td>
-									<td>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										COMPSCI <a href="https://www.eecs189.org/" class="texta b">189</a>
-										<br>
-										(Introduction to Machine Learning)
-										<br>
-										<span class="planned">Planned</span>
-									</td>
-									<td>
-									</td>
-									<td>
-									</td>
-								</tr>
-							</table>
-						</div>
-					</li>
-				</ul>
+				<p class="teaser">
+					On the BrainWalk project at <a href="https://www.ucsf.edu/" class="texta">UC San Francisco</a>,
+					I estimate clinician-rated gait impairment in multiple sclerosis from single-camera walking
+					videos: pose extraction, feature engineering, and a cross-validation design that reports
+					accuracy on new patients rather than on repeated clips of the same person.
+				</p>
+				<p class="morelinks">
+					<a href="research.html" class="texta">Research and publications</a>
+					&middot;
+					<a href="research/brainwalk.html" class="texta">How the pipeline works</a>
+				</p>
 			</div>
 		</div>
 
-		<!-- ============ Research ============ -->
-		<div class="subcard" id="research">
-			<h2 class="cvtitle">Research Experience</h2>
+		<div class="subcard">
+			<h2 class="cvtitle"><a href="projects.html" class="texta">Projects</a></h2>
 			<div class="indent">
-				<h4 class="lralign cvitem">
-					Undergraduate Machine Learning Researcher, BrainWalk Project
-					<span class="date">January 2025-Present</span>
-					<br>
-					<a href="https://www.ucsf.edu/" class="texta">University of California, San Francisco</a>
-					<br>
-					<span class="light">Advisors: Peter Yiitcan Washington, PhD and Riley Bove, MD</span>
-				</h4>
-				<ul class="cvlist">
-					<li>Estimated clinician-rated gait impairment (Functional Gait Assessment, 0&ndash;3) from 91 single-camera walking videos of 46 people with multiple sclerosis, landing within one level of the physical therapist on nearly every video and well clear of a median-score baseline.</li>
-					<li>Built the end-to-end pipeline in Python, from video to prediction: MediaPipe pose extraction, feature engineering, XGBoost training, and evaluation.</li>
-					<li>Reduced 69 raw gait features to 55 interpretable ones with bilateral mean and asymmetry transforms, Spearman-based hierarchical clustering (|&rho;| &gt; 0.8), and clinician-guided retention.</li>
-					<li>Cut prediction error further by ranking features with SHAP inside each training fold and comparing top-5/10/20 subsets, so feature selection never saw held-out participants.</li>
-					<li>Designed nested participant-grouped cross-validation (5 outer &times; 3 inner folds) with bootstrap confidence intervals, so reported accuracy reflects performance on new patients rather than on repeated clips of the same person.</li>
-					<li>Traced the model&rsquo;s weakest class, the most impaired videos, to wall contact: the physical therapist noted it in 8 of the 9 videos scored 0, and the pose features cannot see it. Delivered a SHAP feature-importance report and a data dictionary to the clinical team.</li>
-					<li><a href="research/brainwalk.html" class="texta">How the pipeline works</a>, in more detail than a list of bullets allows.</li>
-				</ul>
-
-				<h4 class="cvitem">
-					<a class="expand" role="button" tabindex="0" aria-expanded="false">Experimental Techniques</a>
-				</h4>
-				<div class="expandcontent">
-					<ul class="cvlist">
-						<li>Stereotaxic surgery and intracranial viral injection</li>
-						<li>Mouse perfusion and tissue fixation</li>
-						<li>Mouse brain extraction and tissue sectioning</li>
-						<li>Brain tissue preparation for histological analysis</li>
-						<li>Intraperitoneal (IP) and subcutaneous injections</li>
-						<li>Surgical suturing and post-operative care</li>
-						<li>Laboratory mouse handling</li>
-					</ul>
-				</div>
+				<p class="teaser">
+					Wordle in Java with a solver that picks each guess by expected information gain,
+					seed-reproducible world generation, single-cycle and pipelined RISC-V CPUs in Logisim, and
+					search, reinforcement-learning, and particle-filter agents for Pacman.
+				</p>
+				<p class="morelinks">
+					<a href="projects.html" class="texta">All projects</a>
+					&middot;
+					<a href="projects/wordle.html" class="texta">Play Wordle, with the solver beside the board</a>
+				</p>
 			</div>
 		</div>
 
-		<!-- ============ Publications ============ -->
-		<div class="subcard" id="publications">
-			<h2 class="cvtitle">Publications</h2>
+		<div class="subcard">
+			<h2 class="cvtitle"><a href="cv.html" class="texta">Curriculum vitae</a></h2>
 			<div class="indent">
-				<h4 class="lralign cvitem">
-					Conference Abstract
-					<span class="date">Submitted</span>
-				</h4>
-				<ul class="cvlist">
-					<li>S. Jung, <span class="emph">Q. Chen</span>, M. McCune, &hellip;, P. Washington, R. Bove. &ldquo;Machine Learning-Based Estimation of Gait Impairment Using Single-Camera Videos in Multiple Sclerosis: Validation against Clinician Ratings.&rdquo; <a href="https://www.aan.com/" class="texta">American Academy of Neurology</a> 2027 Annual Meeting.</li>
-				</ul>
-			</div>
-		</div>
-
-		<!-- ============ Projects ============ -->
-		<div class="subcard" id="projects">
-			<h2 class="cvtitle">Projects</h2>
-			<div class="indent">
-				<h4 class="lralign cvitem">
-					Wordle
-					<span class="date">Java</span>
-				</h4>
-				<ul class="cvlist">
-					<li>Wordle in Java: a Swing game plus solvers that choose each guess to maximise expected
-						information gain; the decision-tree search averages 3.44 guesses and never needs more than
-						six. <a href="projects/wordle.html" class="texta">Play it here</a>, with the solver scoring
-						every word beside the board, or read the
-						<a href="https://github.com/QixingChen463/wordle" class="texta">code</a>.</li>
-				</ul>
-
-				<h4 class="lralign cvitem">
-					Build Your Own World
-					<span class="date">Java</span>
-				</h4>
-				<ul class="cvlist">
-					<li>Generated connected, seed-reproducible 2D worlds by linking rooms with randomised Prim's algorithm and union-find.</li>
-					<li>Built a tile engine, player movement, save and load, and an enemy that chases the player in real time using Dijkstra's shortest paths.</li>
-				</ul>
-
-				<h4 class="lralign cvitem">
-					RISC-V CPU &amp; Neural Network Classifier
-					<span class="date">Logisim, RISC-V Assembly</span>
-				</h4>
-				<ul class="cvlist">
-					<li>Designed single-cycle and two-stage pipelined RISC-V CPUs in Logisim, including ROM-based control logic, partial loads and stores, and branch and jump handling with pipeline flushes.</li>
-					<li>Implemented a neural network classifier in RISC-V assembly, hand-writing matrix multiplication, ReLU, and argmax.</li>
-				</ul>
-
-				<h4 class="lralign cvitem">
-					Pacman AI
-					<span class="date">Python</span>
-				</h4>
-				<ul class="cvlist">
-					<li>Implemented search (A*, UCS) and adversarial agents (minimax, expectimax) for navigation and multi-agent play.</li>
-					<li>Built value-iteration and Q-learning agents, tracked hidden ghosts with HMM exact inference and particle filtering, and trained neural network digit classifiers.</li>
-				</ul>
-
-				<h4 class="lralign cvitem">
-					Typing Bot
-					<span class="date">Java</span>
-				</h4>
-				<ul class="cvlist">
-					<li>Browser automation that reads page text, transcribes captcha challenges with a vision model, and replays them as OS-level keystrokes. <a href="https://github.com/QixingChen463/typing-bot" class="texta">Code</a>.</li>
-				</ul>
-
-				<h4 class="lralign cvitem">
-					Maze Game AI
-					<span class="date">Python</span>
-				</h4>
-				<ul class="cvlist">
-					<li>Implemented maze solving using recursive backtracking algorithms.</li>
-				</ul>
-			</div>
-		</div>
-
-		<!-- ============ Teaching ============ -->
-		<div class="subcard" id="teaching">
-			<h2 class="cvtitle">Teaching Experience</h2>
-			<div class="indent">
-				<h4 class="lralign cvitem">
-					Tutor, <a href="https://datastructur.es/" class="texta">COMPSCI 61B</a> (Data Structures)
-					<span class="date">August 2025-December 2025</span>
-					<br>
-					<a href="https://eecs.berkeley.edu/" class="texta">Dept. of EECS</a>, <a href="https://www.berkeley.edu/" class="texta">University of California, Berkeley</a>
-				</h4>
-				<ul class="cvlist">
-					<li>Tutored undergraduate students in Java, data structures, algorithms, debugging, and exam preparation.</li>
-				</ul>
-			</div>
-		</div>
-
-		<!-- ============ Skills ============ -->
-		<div class="subcard" id="skills">
-			<h2 class="cvtitle">Technical Skills</h2>
-			<div class="indent">
-				<h4 class="cvitem light">Languages</h4>
-				<ul class="chips">
-					<li>Python</li>
-					<li>Java</li>
-					<li>C</li>
-					<li>RISC-V Assembly</li>
-					<li>SQL</li>
-					<li>Scheme</li>
-				</ul>
-				<h4 class="cvitem light">Machine Learning &amp; Data</h4>
-				<ul class="chips">
-					<li>scikit-learn</li>
-					<li>XGBoost</li>
-					<li>SHAP</li>
-					<li>PyTorch</li>
-					<li>pandas</li>
-					<li>NumPy</li>
-				</ul>
-				<h4 class="cvitem light">Computer Vision</h4>
-				<ul class="chips">
-					<li>MediaPipe</li>
-					<li>OpenCV</li>
-				</ul>
-				<h4 class="cvitem light">Methods</h4>
-				<ul class="chips">
-					<li>cross-validation design</li>
-					<li>feature selection</li>
-					<li>model evaluation (MAE, quadratic weighted kappa)</li>
-					<li>bootstrap confidence intervals</li>
-				</ul>
-				<h4 class="cvitem light">Tools</h4>
-				<ul class="chips">
-					<li>Git</li>
-					<li>Logisim</li>
-					<li>Java Swing</li>
-				</ul>
-			</div>
-		</div>
-
-		<!-- ============ Contact ============ -->
-		<div class="subcard" id="contact">
-			<h2 class="cvtitle">Contact</h2>
-			<div class="indent">
-				<ul class="cvlist">
-					<li>Email: <a href="mailto:qixing_chen@berkeley.edu" class="texta">qixing_chen@berkeley.edu</a></li>
-					<li>GitHub: <a href="https://github.com/QixingChen463" class="texta">@QixingChen463</a></li>
-				</ul>
+				<p class="teaser">
+					B.A. in Neuroscience and B.A. in Computer Science at Berkeley, expected May 2028, with the
+					coursework behind them, tutoring for Data Structures, and the tools I actually use.
+				</p>
+				<p class="morelinks">
+					<a href="cv.html" class="texta">Education, teaching, and skills</a>
+				</p>
 			</div>
 		</div>
 

@@ -14,6 +14,76 @@ body {
 	color: #1A1A1A;
 }
 
+/* ---------- Site navigation ---------- */
+
+/* The sections used to be one scroll; they are separate pages now, so every
+   page carries the same bar. Sticky because the C.V. page is still long. */
+.sitenav {
+	position: sticky;
+	top: 0;
+	z-index: 10;
+	background-color: #FFFFFF;
+	padding: 0.75em 0 0 0;
+}
+
+/* Same measure and padding as div.card, so the bar lines up with the cards
+   below it rather than sitting a few pixels off. */
+.navinner {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 0.3em 1.2em;
+	max-width: 60em;
+	margin: 0 auto;
+	padding: 0.5em 1.5em;
+	background-color: #E6E6E6;
+	border-radius: 1em;
+}
+
+.navbrand {
+	font-weight: bold;
+	margin-right: auto;
+}
+
+.navlinks {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0 1.1em;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+/* The page you are on is a label, not a link: no blue, nothing to click. */
+.sitenav [aria-current="page"] {
+	color: #1A1A1A;
+	font-weight: bold;
+	text-decoration: none;
+	cursor: default;
+}
+
+/* ---------- Landing page ---------- */
+
+/* A one-paragraph trailer for each section, so the home page says what is
+   behind a link instead of just naming it. */
+.teaser {
+	max-width: 44em;
+	margin: 0.25em 0 0 0;
+}
+
+.morelinks {
+	max-width: 44em;
+	margin: 0.6em 0 0 0;
+	font-size: 0.9em;
+	text-align: left;
+}
+
+.contactline {
+	margin: 0.8em 0 0 0;
+	font-size: 0.95em;
+	text-align: left;
+}
+
 /* ---------- Cards ---------- */
 
 /* Cap the measure. Full-viewport cards ran to 140-odd characters a line
@@ -274,6 +344,15 @@ footer p {
 
 	div.card {
 		margin: 0.5em;
+		padding: 0.5em 0.8em;
+	}
+
+	.sitenav {
+		padding: 0.5em 0 0 0;
+	}
+
+	.navinner {
+		margin: 0 0.5em;
 		padding: 0.5em 0.8em;
 	}
 

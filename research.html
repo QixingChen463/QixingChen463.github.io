@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>
+		Research — Qixing Chen
+	</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Research experience and publications: estimating clinician-rated gait impairment in multiple sclerosis from single-camera walking videos.">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="script.js" defer></script>
+</head>
+
+<body>
+	<nav class="sitenav" aria-label="Sections">
+		<div class="navinner">
+			<a href="index.html" class="navbrand texta">Qixing Chen</a>
+			<ul class="navlinks">
+				<li><a href="research.html" class="texta" aria-current="page">Research</a></li>
+				<li><a href="projects.html" class="texta">Projects</a></li>
+				<li><a href="cv.html" class="texta">CV</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="card" id="top">
+		<h1>Research</h1>
+		<p class="lede">
+			Machine learning for clinical movement data: how much of a measurement that normally needs a
+			clinician in the room can be recovered from an ordinary video, and where that estimate stops
+			being trustworthy.
+		</p>
+	</div>
+
+	<div class="card">
+
+		<!-- ============ Research ============ -->
+		<div class="subcard" id="research">
+			<h2 class="cvtitle">Research Experience</h2>
+			<div class="indent">
+				<h4 class="lralign cvitem">
+					Undergraduate Machine Learning Researcher, BrainWalk Project
+					<span class="date">January 2025-Present</span>
+					<br>
+					<a href="https://www.ucsf.edu/" class="texta">University of California, San Francisco</a>
+					<br>
+					<span class="light">Advisors: Peter Yiitcan Washington, PhD and Riley Bove, MD</span>
+				</h4>
+				<ul class="cvlist">
+					<li>Estimated clinician-rated gait impairment (Functional Gait Assessment, 0&ndash;3) from 91 single-camera walking videos of 46 people with multiple sclerosis, landing within one level of the physical therapist on nearly every video and well clear of a median-score baseline.</li>
+					<li>Built the end-to-end pipeline in Python, from video to prediction: MediaPipe pose extraction, feature engineering, XGBoost training, and evaluation.</li>
+					<li>Reduced 69 raw gait features to 55 interpretable ones with bilateral mean and asymmetry transforms, Spearman-based hierarchical clustering (|&rho;| &gt; 0.8), and clinician-guided retention.</li>
+					<li>Cut prediction error further by ranking features with SHAP inside each training fold and comparing top-5/10/20 subsets, so feature selection never saw held-out participants.</li>
+					<li>Designed nested participant-grouped cross-validation (5 outer &times; 3 inner folds) with bootstrap confidence intervals, so reported accuracy reflects performance on new patients rather than on repeated clips of the same person.</li>
+					<li>Traced the model&rsquo;s weakest class, the most impaired videos, to wall contact: the physical therapist noted it in 8 of the 9 videos scored 0, and the pose features cannot see it. Delivered a SHAP feature-importance report and a data dictionary to the clinical team.</li>
+					<li><a href="research/brainwalk.html" class="texta">How the pipeline works</a>, in more detail than a list of bullets allows.</li>
+				</ul>
+
+				<h4 class="cvitem">
+					<a class="expand" role="button" tabindex="0" aria-expanded="false">Experimental Techniques</a>
+				</h4>
+				<div class="expandcontent">
+					<ul class="cvlist">
+						<li>Stereotaxic surgery and intracranial viral injection</li>
+						<li>Mouse perfusion and tissue fixation</li>
+						<li>Mouse brain extraction and tissue sectioning</li>
+						<li>Brain tissue preparation for histological analysis</li>
+						<li>Intraperitoneal (IP) and subcutaneous injections</li>
+						<li>Surgical suturing and post-operative care</li>
+						<li>Laboratory mouse handling</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<!-- ============ Publications ============ -->
+		<div class="subcard" id="publications">
+			<h2 class="cvtitle">Publications</h2>
+			<div class="indent">
+				<h4 class="lralign cvitem">
+					Conference Abstract
+					<span class="date">Submitted</span>
+				</h4>
+				<ul class="cvlist">
+					<li>S. Jung, <span class="emph">Q. Chen</span>, M. McCune, &hellip;, P. Washington, R. Bove. &ldquo;Machine Learning-Based Estimation of Gait Impairment Using Single-Camera Videos in Multiple Sclerosis: Validation against Clinician Ratings.&rdquo; <a href="https://www.aan.com/" class="texta">American Academy of Neurology</a> 2027 Annual Meeting.</li>
+				</ul>
+			</div>
+		</div>
+
+	</div>
+</body>
+
+<footer>
+	<p>Qixing Chen, <span id="currentYear"></span></p>
+</footer>
+</html>
