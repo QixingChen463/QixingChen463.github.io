@@ -40,11 +40,6 @@ body {
 	border-radius: 1em;
 }
 
-.navbrand {
-	font-weight: bold;
-	margin-right: auto;
-}
-
 .navlinks {
 	display: flex;
 	flex-wrap: wrap;
@@ -82,6 +77,30 @@ body {
 	margin: 0.8em 0 0 0;
 	font-size: 0.95em;
 	text-align: left;
+}
+
+/* Borrows the Wordle page's tiles: a real board row reads as an invitation to
+   play in a way that another line of prose does not. */
+.playstrip {
+	margin: 0.3em 0 0.9em 0;
+}
+
+.playcta {
+	margin: 0.9em 0 0.2em 0;
+	text-align: left;
+}
+
+/* .btn is otherwise a <button>; as a link it needs the inline-block box and
+   none of the underline. */
+a.btn,
+a.btn:visited {
+	display: inline-block;
+	color: #0645AD;
+	text-decoration: none;
+}
+
+a.btn:hover {
+	color: #0A2D6E;
 }
 
 /* ---------- Cards ---------- */

@@ -14,8 +14,8 @@
 <body>
 	<nav class="sitenav" aria-label="Sections">
 		<div class="navinner">
-			<a href="index.html" class="navbrand texta" aria-current="page">Qixing Chen</a>
 			<ul class="navlinks">
+				<li><a href="index.html" class="texta" aria-current="page">Home</a></li>
 				<li><a href="research.html" class="texta">Research</a></li>
 				<li><a href="projects.html" class="texta">Projects</a></li>
 				<li><a href="cv.html" class="texta">CV</a></li>
@@ -65,14 +65,12 @@
 			<h2 class="cvtitle"><a href="projects.html" class="texta">Projects</a></h2>
 			<div class="indent">
 				<p class="teaser">
-					Wordle in Java with a solver that picks each guess by expected information gain,
-					seed-reproducible world generation, single-cycle and pipelined RISC-V CPUs in Logisim, and
-					search, reinforcement-learning, and particle-filter agents for Pacman.
+					Seed-reproducible 2D worlds linked by randomised Prim&rsquo;s algorithm, single-cycle and
+					pipelined RISC-V CPUs in Logisim with a neural network classifier hand-written in assembly,
+					and search, reinforcement-learning, and particle-filter agents for Pacman.
 				</p>
 				<p class="morelinks">
 					<a href="projects.html" class="texta">All projects</a>
-					&middot;
-					<a href="projects/wordle.html" class="texta">Play Wordle, with the solver beside the board</a>
 				</p>
 			</div>
 		</div>
@@ -86,6 +84,29 @@
 				</p>
 				<p class="morelinks">
 					<a href="cv.html" class="texta">Education, teaching, and skills</a>
+				</p>
+			</div>
+		</div>
+
+		<div class="subcard" id="play">
+			<h2 class="cvtitle">Play Wordle</h2>
+			<div class="indent">
+				<div class="boardrow playstrip" aria-hidden="true">
+					<span class="tile green">R</span>
+					<span class="tile gray">A</span>
+					<span class="tile yellow">I</span>
+					<span class="tile gray">S</span>
+					<span class="tile gray">E</span>
+				</div>
+				<p class="teaser">
+					Six tries at a five-letter word, the usual rules &mdash; except the solver from my Java
+					project sits open beside the board. Before each guess it scores all 2315 possible answers by
+					how much each one is expected to tell you; after each guess it shows what the colours
+					actually ruled out. Take its suggestion, argue with it, or hand it the whole game and watch:
+					played out over every word in the list it never needs a seventh guess, and averages 3.50.
+				</p>
+				<p class="playcta">
+					<a href="projects/wordle.html" class="btn">Play it &rarr;</a>
 				</p>
 			</div>
 		</div>
