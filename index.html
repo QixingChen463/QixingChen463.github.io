@@ -193,12 +193,13 @@
 					<span class="light">Advisors: Peter Yiitcan Washington, PhD and Riley Bove, MD</span>
 				</h4>
 				<ul class="cvlist">
-					<li>Estimated clinician-rated gait impairment (Functional Gait Assessment, 0&ndash;3) from 91 single-camera walking videos of 46 people with multiple sclerosis at MAE 0.47: 37.7% better than a median-score baseline, and within one level of the clinician on 96.7% of videos (57.1% exact).</li>
+					<li>Estimated clinician-rated gait impairment (Functional Gait Assessment, 0&ndash;3) from 91 single-camera walking videos of 46 people with multiple sclerosis, landing within one level of the physical therapist on nearly every video and well clear of a median-score baseline.</li>
 					<li>Built the end-to-end pipeline in Python, from video to prediction: MediaPipe pose extraction, feature engineering, XGBoost training, and evaluation.</li>
-					<li>Reduced 69 raw gait features to 55 interpretable ones with bilateral mean and asymmetry transforms, Spearman-based hierarchical clustering (|&rho;| &gt; 0.8), and clinician-guided retention, with 99.3% representative agreement when re-clustered inside folds.</li>
-					<li>Cut prediction error 21.1% against the full 55-feature model by ranking features with SHAP inside each training fold and comparing top-5/10/20 subsets, so feature selection never saw held-out participants.</li>
+					<li>Reduced 69 raw gait features to 55 interpretable ones with bilateral mean and asymmetry transforms, Spearman-based hierarchical clustering (|&rho;| &gt; 0.8), and clinician-guided retention.</li>
+					<li>Cut prediction error further by ranking features with SHAP inside each training fold and comparing top-5/10/20 subsets, so feature selection never saw held-out participants.</li>
 					<li>Designed nested participant-grouped cross-validation (5 outer &times; 3 inner folds) with bootstrap confidence intervals, so reported accuracy reflects performance on new patients rather than on repeated clips of the same person.</li>
-					<li>Traced the weakest class (score 0, 11.1% recall) to wall contact, noted by the physical therapist in 8 of 9 score-0 videos and missed by current pose features; delivered a SHAP feature-importance report and a data dictionary to the clinical team.</li>
+					<li>Traced the model&rsquo;s weakest class, the most impaired videos, to wall contact: the physical therapist noted it in 8 of the 9 videos scored 0, and the pose features cannot see it. Delivered a SHAP feature-importance report and a data dictionary to the clinical team.</li>
+					<li><a href="research/brainwalk.html" class="texta">How the pipeline works</a>, in more detail than a list of bullets allows.</li>
 				</ul>
 
 				<h4 class="cvitem">
