@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>
+		BrainWalk — Qixing Chen
+	</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Estimating clinician-rated gait impairment in multiple sclerosis from single-camera walking videos: the problem, the pipeline, and what the model could not see.">
+	<link rel="stylesheet" type="text/css" href="../style.css">
+	<script src="../script.js" defer></script>
+</head>
+
+<body>
+	<div class="card" id="top">
+		<p class="backlink"><a href="../index.html" class="texta">&larr; Qixing Chen</a></p>
+		<h1>Reading gait impairment off a single camera</h1>
+		<p class="lede">
+			BrainWalk, at <a href="https://www.ucsf.edu/" class="texta">UC San Francisco</a>, asks whether an
+			ordinary walking video can stand in for a measurement that normally needs a physical therapist in
+			the room. I work on the model: everything from the pose landmarks to the cross-validation design,
+			and on the question of what the model is still blind to.
+		</p>
+		<p class="light">
+			Advisors: Peter Yiitcan Washington, PhD and Riley Bove, MD &middot; January 2025 &ndash; present
+		</p>
+	</div>
+
+	<div class="card">
+
+		<!-- ============ The problem ============ -->
+		<div class="subcard">
+			<h2 class="cvtitle">Why walking</h2>
+			<div class="indent">
+				<p>
+					Multiple sclerosis damages the myelin around nerve fibres, and one of the places the damage
+					shows up first is walking: speed drops, the stride loses its symmetry, the body works harder
+					to stay balanced. Clinicians track this with scales like the Functional Gait Assessment,
+					scored while watching the person walk. Item 1 covers walking on a level surface and runs from
+					0, severe impairment, to 3, normal.
+				</p>
+				<p>
+					A score like that is only taken when the person is in the clinic, which may be twice a year.
+					The change worth catching often happens in between. If the same judgement could be made from
+					a phone video, it could be made as often as the person is willing to record one &mdash; which
+					is the reason to ask how far a single camera gets you.
+				</p>
+			</div>
+		</div>
+
+		<!-- ============ The data ============ -->
+		<div class="subcard">
+			<h2 class="cvtitle">What we have to learn from</h2>
+			<div class="indent">
+				<p>
+					91 fast-walk videos from 46 people with MS, each watched and scored by a physical therapist.
+					One camera, no markers, no depth sensor.
+				</p>
+				<figure class="figure">
+					<img src="../img/brainwalk/dataset.png" alt="Bar chart of the 91 videos by clinician-rated FGA score: 9 videos at score 0, 15 at 1, 31 at 2 and 36 at 3." width="1600" height="960">
+					<figcaption>
+						The scores are not evenly spread. Most people in the study walk reasonably well, and the
+						most impaired end &mdash; the end a clinician most wants flagged &mdash; is the thinnest
+						part of the data. That imbalance comes back at the end of this page.
+					</figcaption>
+				</figure>
+			</div>
+		</div>
+
+		<!-- ============ Video to numbers ============ -->
+		<div class="subcard">
+			<h2 class="cvtitle">From video to numbers</h2>
+			<div class="indent">
+				<p>
+					A pose estimator reads each frame and returns the positions of the body's landmarks &mdash;
+					nose, shoulders, elbows, wrists, hips, knees, ankles, feet. Everything downstream is built
+					out of how those points move relative to each other, which is what keeps the method
+					independent of where the camera happened to be standing.
+				</p>
+
+				<figure class="figure">
+					<svg class="diagram" viewBox="0 0 640 400" role="img" aria-labelledby="bodytitle bodydesc">
+						<title id="bodytitle">Which body landmarks the gait features come from</title>
+						<desc id="bodydesc">A stick figure with its tracked landmarks marked, each group labelled with the gait features computed from it: head sway from the nose, shoulder rotation from the shoulders, arm swing from the wrists, angular speed from the hips, knee angle from the knees, ankle spacing from the ankles, and contact events from the feet.</desc>
+
+						<g stroke="#5A5A5A" stroke-width="2" fill="none" stroke-linecap="round">
+							<path d="M150 72 L150 110"></path>
+							<path d="M120 110 L180 110"></path>
+							<path d="M150 110 L150 190"></path>
+							<path d="M128 190 L172 190"></path>
+							<path d="M120 110 L105 155 L98 200"></path>
+							<path d="M180 110 L195 155 L202 200"></path>
+							<path d="M128 190 L124 260 L120 325"></path>
+							<path d="M172 190 L176 260 L180 325"></path>
+							<path d="M120 325 L108 338"></path>
+							<path d="M180 325 L192 338"></path>
+						</g>
+
+						<g fill="#4285F4">
+							<circle cx="150" cy="60" r="11"></circle>
+							<circle cx="120" cy="110" r="4.5"></circle>
+							<circle cx="180" cy="110" r="4.5"></circle>
+							<circle cx="105" cy="155" r="4.5"></circle>
+							<circle cx="195" cy="155" r="4.5"></circle>
+							<circle cx="98" cy="200" r="4.5"></circle>
+							<circle cx="202" cy="200" r="4.5"></circle>
+							<circle cx="128" cy="190" r="4.5"></circle>
+							<circle cx="172" cy="190" r="4.5"></circle>
+							<circle cx="124" cy="260" r="4.5"></circle>
+							<circle cx="176" cy="260" r="4.5"></circle>
+							<circle cx="120" cy="325" r="4.5"></circle>
+							<circle cx="180" cy="325" r="4.5"></circle>
+							<circle cx="108" cy="338" r="4"></circle>
+							<circle cx="192" cy="338" r="4"></circle>
+						</g>
+
+						<g stroke="#A8A8A8" stroke-width="1" fill="none" stroke-dasharray="3 3">
+							<path d="M161 60 L300 54"></path>
+							<path d="M186 110 L300 100"></path>
+							<path d="M208 200 L300 150"></path>
+							<path d="M178 190 L300 196"></path>
+							<path d="M182 260 L300 244"></path>
+							<path d="M186 325 L300 300"></path>
+							<path d="M198 338 L300 348"></path>
+						</g>
+
+						<g fill="#1A1A1A" font-size="13" font-family="inherit">
+							<text x="308" y="58">Side-to-side head sway</text>
+							<text x="308" y="104">Shoulder-line rotation</text>
+							<text x="308" y="154">Arm swing, and how far the two arms differ</text>
+							<text x="308" y="200">Hip angular speed</text>
+							<text x="308" y="248">Knee angle through the stride</text>
+							<text x="308" y="304">Ankle spacing, and how much it varies</text>
+							<text x="308" y="352">Foot contact and toe-off events</text>
+						</g>
+					</svg>
+					<figcaption>
+						Each family of features is a different way of asking how steadily the body is being
+						carried forward. The left and right side are tracked separately, so a limp shows up as a
+						difference between them rather than being averaged away.
+					</figcaption>
+				</figure>
+
+				<p>
+					The timing features come from the events inside one stride. A stride divides into the stance
+					phase, where the foot is carrying weight, and the swing phase, where it is travelling; how
+					that time is divided is one of the things that changes when walking gets harder.
+				</p>
+
+				<figure class="figure">
+					<svg class="diagram" viewBox="0 0 640 190" role="img" aria-labelledby="gaittitle gaitdesc">
+						<title id="gaittitle">The gait cycle, stance and swing</title>
+						<desc id="gaitdesc">One stride shown as a bar: about sixty per cent of it is the stance phase, from initial contact through foot flat, mid-stance and heel lift to toe off, and the remaining forty per cent is the swing phase, ending at the next initial contact.</desc>
+
+						<rect x="60" y="76" width="312" height="30" fill="#A8C7FA"></rect>
+						<rect x="372" y="76" width="208" height="30" fill="#E1E8F2"></rect>
+
+						<!-- Ticks stop at the bar's edges rather than crossing it, so the
+						     phase labels stay readable. -->
+						<g stroke="#5A5A5A" stroke-width="1.5">
+							<path d="M60 68 L60 76 M60 106 L60 116"></path>
+							<path d="M115 68 L115 76 M115 106 L115 116"></path>
+							<path d="M215 68 L215 76 M215 106 L215 116"></path>
+							<path d="M300 68 L300 76 M300 106 L300 116"></path>
+							<path d="M372 68 L372 76 M372 106 L372 116"></path>
+							<path d="M580 68 L580 76 M580 106 L580 116"></path>
+						</g>
+
+						<g fill="#1A1A1A" font-size="13" font-family="inherit">
+							<text x="216" y="96" text-anchor="middle">Stance &mdash; foot carrying weight</text>
+							<text x="476" y="96" text-anchor="middle">Swing</text>
+						</g>
+
+						<g fill="#3A3A3A" font-size="11.5" font-family="inherit" text-anchor="middle">
+							<text x="60" y="134">initial contact</text>
+							<text x="115" y="152">foot flat</text>
+							<text x="215" y="134">mid-stance</text>
+							<text x="300" y="152">heel lift</text>
+							<text x="372" y="134">toe off</text>
+							<text x="580" y="152">next contact</text>
+						</g>
+
+						<g fill="#5A5A5A" font-size="12" font-family="inherit">
+							<text x="320" y="36" text-anchor="middle">One stride</text>
+						</g>
+						<g stroke="#A8A8A8" stroke-width="1">
+							<path d="M60 50 L580 50"></path>
+							<path d="M60 46 L60 54"></path>
+							<path d="M580 46 L580 54"></path>
+						</g>
+					</svg>
+					<figcaption>
+						Stance ratio, swing time, stride time and step rate all come out of where these events
+						fall. A person who is unsure of their balance tends to spend longer with the foot down.
+					</figcaption>
+				</figure>
+			</div>
+		</div>
+
+		<!-- ============ Feature reduction ============ -->
+		<div class="subcard">
+			<h2 class="cvtitle">Cutting 69 features down</h2>
+			<div class="indent">
+				<p>
+					The first pass produced 69 features, and many of them were saying the same thing twice. Left
+					and right versions of a measurement were folded into a mean and an asymmetry term, which is
+					the form a clinician reasons in anyway. What remained was clustered by Spearman correlation,
+					so that any group of features moving together above a threshold was represented by one of
+					them &mdash; with the choice of which one guided by what the clinical team could interpret,
+					not just by which had the highest variance.
+				</p>
+				<figure class="figure">
+					<img src="../img/brainwalk/pipeline.png" alt="Bar chart: 69 initial gait features from MediaPipe pose, refined to 55 by left-right mean and asymmetry transforms, correlation clustering and clinically guided retention, then 20 selected by SHAP inside each training fold." width="1800" height="780">
+					<figcaption>
+						The last step is different in kind from the first two: 69 to 55 happens once, by hand and
+						by argument. 55 to 20 happens again and again, inside every training fold.
+					</figcaption>
+				</figure>
+				<p>
+					That distinction is the whole point. Ranking features by SHAP on the full dataset and then
+					training on the winners would let the test videos influence which features the model was
+					allowed to see. Doing the ranking inside each training fold costs accuracy on paper and buys
+					a number you can believe.
+				</p>
+			</div>
+		</div>
+
+		<!-- ============ Validation ============ -->
+		<div class="subcard">
+			<h2 class="cvtitle">Why the validation is grouped by person</h2>
+			<div class="indent">
+				<p>
+					46 people, 91 videos: most participants are recorded more than once. Split those videos at
+					random and the same person's walk appears in training and in test, and the model can score
+					well by recognising the walker rather than the walking. The result would look good and would
+					mean nothing for the next patient through the door.
+				</p>
+				<p>
+					So every split is made over participants, never over videos, and the tuning happens in an
+					inner loop inside each training set &mdash; five outer folds, three inner. Feature selection
+					and hyper-parameter search both live in the inner loop, which is the only way the outer fold
+					stays an honest estimate of what happens on someone the model has never seen. Confidence
+					intervals come from bootstrapping over the held-out predictions, because with 46 people a
+					single point estimate is not worth much on its own.
+				</p>
+			</div>
+		</div>
+
+		<!-- ============ What it keys on ============ -->
+		<div class="subcard">
+			<h2 class="cvtitle">What the model keys on</h2>
+			<div class="indent">
+				<p>
+					Because the ranking is redone in every fold, the interesting question is not which features
+					one model liked but which ones kept being chosen no matter how the data was split.
+				</p>
+				<figure class="figure">
+					<img src="../img/brainwalk/features.png" alt="Bar chart of the nine features SHAP ranked into the top 20 in at least four of five training folds, led by walking speed, wrist swing range, left-right elbow speed difference and time spent in stance." width="1700" height="1080">
+					<figcaption>
+						Walking speed comes first in every fold, which is reassuring rather than surprising: it is
+						also the first thing a clinician looks at. The arm measurements earning their place next to
+						it is less obvious, and it fits what therapists describe &mdash; the arms stop swinging
+						freely when balance takes effort.
+					</figcaption>
+				</figure>
+			</div>
+		</div>
+
+		<!-- ============ The wall ============ -->
+		<div class="subcard">
+			<h2 class="cvtitle">The thing the camera could not see</h2>
+			<div class="indent">
+				<p>
+					Most of the model's predictions land within one level of the clinician's score. Its errors
+					are not spread evenly, though: it is at its worst exactly where the data is thinnest and
+					where being right matters most, on the videos a therapist scored 0.
+				</p>
+				<p>
+					Rather than treat that as a class-imbalance problem to be reweighted away, I went back and
+					watched those videos with the physical therapist. In eight of the nine, the person steadied
+					themselves against the wall as they walked. For a clinician that is decisive &mdash; needing
+					the wall is most of what a 0 means. For the model it is invisible: the landmarks describe the
+					body and nothing else in the room, so a person who is walking slowly but with their hand on a
+					wall looks much like a person who is simply walking slowly.
+				</p>
+				<p>
+					That is a data problem rather than a modelling one, and it does not get fixed by a better
+					loss function. I handed the clinical team a feature-importance report and a data dictionary
+					so the question can be settled properly: whether wall contact should be annotated, or
+					detected, before anyone asks a model to reproduce a score that partly depends on it.
+				</p>
+			</div>
+		</div>
+
+		<!-- ============ Status ============ -->
+		<div class="subcard">
+			<h2 class="cvtitle">Status</h2>
+			<div class="indent">
+				<ul class="cvlist">
+					<li>
+						An abstract on this work is under review for the
+						<a href="https://www.aan.com/" class="texta">American Academy of Neurology</a> 2027 Annual
+						Meeting, with S. Jung as first author. The accuracy figures stay off this page until the
+						results are public.
+					</li>
+					<li>The pipeline is Python: pose extraction, feature engineering, XGBoost, SHAP, bootstrap intervals.</li>
+					<li>Happy to talk about any of it &mdash; <a href="mailto:qixing_chen@berkeley.edu" class="texta">qixing_chen@berkeley.edu</a>.</li>
+				</ul>
+			</div>
+		</div>
+
+	</div>
+</body>
+
+<footer>
+	<p>Qixing Chen, <span id="currentYear"></span></p>
+</footer>
+</html>

@@ -617,3 +617,33 @@ footer p {
 		font-size: 1em;
 	}
 }
+
+/* ---------- Research figures ---------- */
+
+.figure {
+	margin: 1.3em 0;
+}
+
+/* Charts are drawn on white; on the grey subcard they need the panel to read as
+   a figure rather than as a hole in the page. Capped short of the full measure
+   because a 60em-wide bar chart is harder to read, not easier. */
+.figure img,
+.diagram {
+	display: block;
+	box-sizing: border-box;
+	width: 100%;
+	max-width: 42em;
+	height: auto;
+	padding: 0.6em;
+	border: 0.05em solid #C4C4C4;
+	border-radius: 0.3em;
+	background-color: #FFFFFF;
+}
+
+.figure figcaption {
+	max-width: 42em;
+	margin-top: 0.5em;
+	font-size: 0.9em;
+	color: #3A3A3A;
+	text-align: left;
+}
