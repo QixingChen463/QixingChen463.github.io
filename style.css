@@ -318,3 +318,302 @@ footer p {
 		font-size: 0.9em;
 	}
 }
+
+/* ---------- Wordle page ---------- */
+
+.backlink {
+	margin: 0.5em 0 0 0;
+	font-size: 0.9em;
+}
+
+.lede {
+	max-width: 44em;
+}
+
+/* The board and the solver are one conversation: a guess on the left changes the
+   numbers on the right. Side by side while there is room, so both are in view. */
+.playarea {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: 2em;
+	align-items: start;
+	margin-bottom: 1em;
+}
+
+.playside {
+	min-width: 0;
+}
+
+/* ---------- Board ---------- */
+
+.board {
+	display: grid;
+	gap: 0.35em;
+	width: max-content;
+}
+
+.boardrow {
+	display: grid;
+	grid-template-columns: repeat(5, 3em);
+	gap: 0.35em;
+}
+
+.tile {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 3em;
+	border: 0.08em solid #A8A8A8;
+	border-radius: 0.15em;
+	background-color: #FFFFFF;
+	font-size: 1.1em;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+/* A letter that has been typed but not submitted: no colour yet, but the tile
+   should look answered rather than empty. */
+.tile.filled {
+	border-color: #5A5A5A;
+}
+
+.tile.green,
+.key.green {
+	background-color: #6AAA64;
+	border-color: #6AAA64;
+	color: #FFFFFF;
+}
+
+.tile.yellow,
+.key.yellow {
+	background-color: #C9B458;
+	border-color: #C9B458;
+	color: #FFFFFF;
+}
+
+.tile.gray,
+.key.gray {
+	background-color: #787C7E;
+	border-color: #787C7E;
+	color: #FFFFFF;
+}
+
+.message {
+	min-height: 1.4em;
+	margin: 0.6em 0;
+	text-align: left;
+	font-size: 0.9em;
+}
+
+/* ---------- On-screen keyboard ---------- */
+
+.keyboard {
+	width: 17em;
+}
+
+.keyrow {
+	display: flex;
+	justify-content: center;
+	gap: 0.25em;
+	margin-bottom: 0.25em;
+}
+
+.key {
+	flex: 1 1 auto;
+	padding: 0.5em 0;
+	border: 0.08em solid #A8A8A8;
+	border-radius: 0.2em;
+	background-color: #EDEDED;
+	font-family: inherit;
+	font-size: 0.85em;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
+.key:hover {
+	background-color: #DCDCDC;
+}
+
+.keywide {
+	flex: 1.6 1 auto;
+	font-size: 0.7em;
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+	padding: 0.4em 0.9em;
+	border: 0.08em solid #7E7E7E;
+	border-radius: 0.3em;
+	background-color: #EDEDED;
+	font-family: inherit;
+	font-size: 0.9em;
+	cursor: pointer;
+}
+
+.btn:hover {
+	background-color: #DCDCDC;
+}
+
+.btn[disabled] {
+	opacity: 0.5;
+	cursor: default;
+}
+
+.btnsmall {
+	padding: 0.1em 0.5em;
+	font-size: 0.8em;
+}
+
+.controls {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.6em;
+	margin: 0.8em 0;
+	text-align: left;
+}
+
+.toggle {
+	font-size: 0.9em;
+}
+
+/* ---------- Solver panel ---------- */
+
+.bottitle {
+	margin: 0.8em 0 0.4em 0;
+}
+
+.remaining,
+.candidates,
+.small {
+	text-align: left;
+	margin: 0.4em 0;
+}
+
+.small {
+	font-size: 0.85em;
+}
+
+/* A long comma list is the one place justification really hurts: it stretches
+   the words apart until the line reads as a table. */
+.candidates {
+	font-size: 0.85em;
+	text-align: left;
+	color: #3A3A3A;
+}
+
+.suggestions {
+	border-collapse: collapse;
+	text-align: left;
+}
+
+.suggestions th,
+.suggestions td {
+	padding: 0.15em 0.8em 0.15em 0;
+	font-size: 0.9em;
+	font-weight: normal;
+	vertical-align: middle;
+}
+
+.suggestions th {
+	border-bottom: 0.08em solid #A8A8A8;
+}
+
+.guessword {
+	font-weight: bold;
+	letter-spacing: 0.05em;
+}
+
+.num {
+	text-align: right;
+	font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Per-guess analysis ---------- */
+
+.analysistable {
+	width: auto;
+}
+
+.analysistable td,
+.analysistable th {
+	font-size: 0.9em;
+}
+
+.squares {
+	white-space: nowrap;
+}
+
+.sq {
+	display: inline-block;
+	width: 0.9em;
+	height: 0.9em;
+	margin-right: 0.15em;
+	border: 0.08em solid #A8A8A8;
+	vertical-align: middle;
+}
+
+.sq.green {
+	background-color: #6AAA64;
+	border-color: #6AAA64;
+}
+
+.sq.yellow {
+	background-color: #C9B458;
+	border-color: #C9B458;
+}
+
+.sq.gray {
+	background-color: #787C7E;
+	border-color: #787C7E;
+}
+
+.benchtable {
+	width: auto;
+	margin: 0.5em 0 1em 0;
+	font-size: 0.9em;
+}
+
+.formula {
+	margin: 0.6em 0;
+	text-align: center;
+	font-size: 1.1em;
+}
+
+/* The board is 17em wide and the solver table wants about 24em; below roughly
+   that sum the two columns start squeezing the suggestions, so stack them. */
+@media screen and (max-width: 860px) {
+	.playarea {
+		grid-template-columns: 1fr;
+		gap: 1em;
+	}
+
+	.board,
+	.keyboard {
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+/* Five-column tables do not fit a phone, and shrinking the type far enough to
+   make them fit costs more than a sideways scroll does. */
+.tablescroll {
+	overflow-x: auto;
+}
+
+@media screen and (max-width: 700px) {
+	.borderedtable td,
+	.borderedtable th {
+		padding: 0.4em 0.5em;
+	}
+
+	.boardrow {
+		grid-template-columns: repeat(5, 2.6em);
+	}
+
+	.tile {
+		height: 2.6em;
+		font-size: 1em;
+	}
+}

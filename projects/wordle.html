@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>
+		Wordle — Qixing Chen
+	</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="A playable Wordle with the entropy solver from Qixing Chen's Java project running beside the board.">
+	<link rel="stylesheet" type="text/css" href="../style.css">
+	<script src="../script.js" defer></script>
+	<script src="wordle-words.js" defer></script>
+	<script src="wordle.js" defer></script>
+</head>
+
+<body>
+	<div class="card" id="top">
+		<p class="backlink"><a href="../index.html" class="texta">&larr; Qixing Chen</a></p>
+		<h1>Wordle, with the solver showing its work</h1>
+		<p class="lede">
+			The game below is the Java project from my
+			<a href="https://github.com/QixingChen463/wordle" class="texta">wordle</a> repository, ported to
+			the browser. Play it as usual, or leave the solver panel open: before each guess it scores all
+			2315 words by how much they are expected to tell you, and after each guess it shows what the
+			colours actually cost the field. Played out over every word in the list, choosing by that
+			score alone solves all 2315 in six guesses or fewer, averaging 3.50.
+		</p>
+	</div>
+
+	<div class="card">
+		<div class="subcard">
+			<h2 class="cvtitle">Play</h2>
+			<div class="indent">
+				<div class="playarea">
+					<div class="playside">
+						<div id="board" class="board"></div>
+						<p id="message" class="message" role="status" aria-live="polite"></p>
+						<div id="keyboard" class="keyboard"></div>
+						<p class="controls">
+							<button type="button" id="newgame" class="btn">New word</button>
+							<label class="toggle"><input type="checkbox" id="showbot" checked> Show the solver</label>
+						</p>
+					</div>
+
+					<div class="playside" id="bot">
+						<h3 class="bottitle">The solver</h3>
+						<p id="remaining" class="remaining"></p>
+						<table class="suggestions">
+							<thead>
+								<tr>
+									<th>Guess</th>
+									<th class="num">Bits</th>
+									<th></th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody id="suggestionbody"></tbody>
+						</table>
+						<p id="suggestionnote" class="light small"></p>
+						<p class="controls">
+							<button type="button" id="playbest" class="btn">Play its pick</button>
+							<button type="button" id="autosolve" class="btn">Let it finish</button>
+						</p>
+						<p class="small light">Still possible:</p>
+						<p id="candidates" class="candidates"></p>
+					</div>
+				</div>
+
+				<div id="analysis" hidden>
+					<h3 class="bottitle">Each guess, after the fact</h3>
+					<div class="tablescroll">
+					<table class="borderedtable analysistable">
+						<thead>
+							<tr>
+								<th>Guess</th>
+								<th>Colours</th>
+								<th>Bits expected</th>
+								<th>Bits learned</th>
+								<th>Words left</th>
+							</tr>
+						</thead>
+						<tbody id="analysisbody"></tbody>
+					</table>
+					</div>
+					<p class="small light">
+						A guess is worth a certain number of bits on average; the colouring that comes back is
+						worth <span class="emph">log<sub>2</sub>(before / after)</span>. Getting more than expected
+						means the answer fell in a small bucket, which is luck, not a better guess.
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="subcard">
+			<h2 class="cvtitle">How it picks</h2>
+			<div class="indent">
+				<p>
+					A guess splits the words still possible into buckets, one per colouring it could come back
+					as. If a bucket holds a fraction <span class="emph">p</span> of them, seeing that colouring
+					carries <span class="emph">log<sub>2</sub>(1/p)</span> bits, so the guess is worth
+				</p>
+				<p class="formula">H = &minus;&sum; p&thinsp;log<sub>2</sub>&thinsp;p</p>
+				<p>
+					bits on average, and the higher H is, the fewer words are expected to survive. Every word is
+					scored as a guess, not just the ones that could still be the answer: a word that cannot
+					possibly be right may still split the field better. Ties go to a word that could be the
+					answer, since that one might just win.
+				</p>
+				<p>
+					On an empty board the ranking is the same every game, so this page ships it rather than
+					making you wait: <span class="emph">RAISE</span> at 5.88 bits, then SLATE, CRATE, IRATE,
+					TRACE. After that the candidate set is small enough that scoring all 2315 words against it
+					takes a few milliseconds.
+				</p>
+
+				<h3 class="bottitle">What gray means</h3>
+				<p>
+					The part that is easy to get wrong. Gray does not mean the letter is absent, it means there
+					are no copies of it beyond the ones already coloured in the same guess. Guessing
+					<span class="emph">SPEED</span> against <span class="emph">ABIDE</span> colours the first E
+					yellow and the second gray, because ABIDE has one E and it is already accounted for. Reading
+					gray as "no E anywhere" would throw away the right answer whenever it repeats a letter, so
+					the colouring runs in two passes, greens claimed first.
+				</p>
+
+				<h3 class="bottitle">Against the alternatives</h3>
+				<p>
+					Every word in the list played out, guesses capped at six, from the benchmark in the
+					repository:
+				</p>
+				<div class="tablescroll">
+				<table class="borderedtable benchtable">
+					<tr>
+						<th>Strategy</th>
+						<th>Opens with</th>
+						<th>Average</th>
+						<th>Worst</th>
+						<th>Over six</th>
+					</tr>
+					<tr>
+						<td>letter frequency</td>
+						<td>alert</td>
+						<td>3.684</td>
+						<td>8</td>
+						<td>22 of 2315</td>
+					</tr>
+					<tr>
+						<td>entropy <span class="light">(this page)</span></td>
+						<td>raise</td>
+						<td>3.496</td>
+						<td>6</td>
+						<td>none</td>
+					</tr>
+					<tr>
+						<td>decision-tree search, beam 25</td>
+						<td>slate</td>
+						<td>3.444</td>
+						<td>6</td>
+						<td>none</td>
+					</tr>
+				</table>
+				</div>
+				<p>
+					Entropy is optimal for one turn but not for the game: a guess that reveals slightly fewer
+					bits now can leave a set that splits better next turn, which is why the search opens with
+					SLATE instead and finishes a twentieth of a guess sooner. The search is in the Java project;
+					it is too slow to run while you wait, so the page uses the entropy strategy.
+				</p>
+				<p>
+					Both numbers are above the published optimum of 3.4212 (Selby, 2016), which comes from
+					searching the full 12972-word guess list. This project only guesses from the 2315 answers,
+					so it cannot reach that.
+				</p>
+				<p>
+					Source, including the Swing version and the benchmark:
+					<a href="https://github.com/QixingChen463/wordle" class="texta">github.com/QixingChen463/wordle</a>.
+				</p>
+			</div>
+		</div>
+	</div>
+</body>
+
+<footer>
+	<p>Qixing Chen, <span id="currentYear"></span></p>
+</footer>
+</html>
